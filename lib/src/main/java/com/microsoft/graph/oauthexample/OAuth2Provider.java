@@ -73,7 +73,7 @@ public abstract class OAuth2Provider implements IOAuth2Provider {
 
     /**
      * Create a new instance of the provider
-     * 
+     *
      * @param application the application instance
      */
     public OAuth2Provider(final Application application) {

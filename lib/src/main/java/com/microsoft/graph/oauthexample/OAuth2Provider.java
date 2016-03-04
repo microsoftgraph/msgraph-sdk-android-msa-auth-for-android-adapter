@@ -22,9 +22,9 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
- * Supports login, login silently, logout, and signing requests with authorization information.
+ * Supports login, logout, and signing requests with authorization information.
  */
-public abstract class OAuth2Provider implements IAuthProvider {
+public abstract class OAuth2Provider implements IOAuth2Provider {
 
     /**
      * The authorization header name.
@@ -54,6 +54,7 @@ public abstract class OAuth2Provider implements IAuthProvider {
     /**
      * The client id for this authenticator.
      * http://graph.microsoft.io/en-us/app-registration
+     *
      * @return The client id.
      */
     public abstract String getClientId();
@@ -61,20 +62,18 @@ public abstract class OAuth2Provider implements IAuthProvider {
     /**
      * The scopes for this application.
      * http://graph.microsoft.io/en-us/docs/authorization/permission_scopes
+     *
      * @return The scopes for this application.
      */
     public abstract String[] getScopes();
-
-    /**
-     * Set the logger to a specific instance
-     * @param logger The logger instance to use
-     */
+    @Override
     public void setLogger(final ILogger logger) {
         mLogger = logger;
     }
 
     /**
      * Create a new instance of the provider
+     * 
      * @param application the application instance
      */
     public OAuth2Provider(final Application application) {
@@ -110,16 +109,15 @@ public abstract class OAuth2Provider implements IAuthProvider {
             final String accessToken = mLiveAuthClient.getSession().getAccessToken();
             request.addHeader(AUTHORIZATION_HEADER_NAME, OAUTH_BEARER_PREFIX + accessToken);
         } else {
-            mLogger.logDebug("No active account found, bubbling out an exception");
-            throw new RuntimeException("TODO: THIS IS HORRIBLE!!!");
+            final ClientException exception = new ClientException("Unable to authenticate request, No active account found",
+                                                                  null,
+                                                                  GraphErrorCodes.AuthenticationFailure);
+            mLogger.logError(exception.getMessage(), exception);
+            throw exception;
         }
     }
 
-    /**
-     * Logs out the user
-     *
-     * @param callback The callback when the logout is complete or an error occurs
-     */
+    @Override
     public void logout(final ICallback<Void> callback) {
         mLogger.logDebug("Logout started");
 
@@ -147,12 +145,7 @@ public abstract class OAuth2Provider implements IAuthProvider {
         });
     }
 
-    /**
-     * Login a user by popping UI
-     *
-     * @param activity The current activity
-     * @param callback The callback when the login is complete or an error occurs
-     */
+    @Override
     public void login(final Activity activity, final ICallback<Void> callback) {
         mLogger.logDebug("Login started");
 
@@ -218,7 +211,7 @@ public abstract class OAuth2Provider implements IAuthProvider {
      *
      * @param callback The callback when the login is complete or an error occurs
      */
-    public void loginSilent(final ICallback<Void> callback) {
+    private void loginSilent(final ICallback<Void> callback) {
         mLogger.logDebug("Login silent started");
 
         if (callback == null) {

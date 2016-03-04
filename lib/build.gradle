@@ -20,7 +20,5 @@ android {
 }
 
 dependencies {
-    compile ('com.github.peternied:msa-auth-for-android:OAuth2v2-SNAPSHOT') {
-        exclude module: 'com.microsoft.services.msa'
-    }
+    compile 'com.microsoft.services.msa:msa-auth:0.8.5'
 }

@@ -1,14 +1,13 @@
-package com.microsoft.graph.oauthexample;
+package com.microsoft.graph.oauth2provider;
 
 import android.app.Activity;
 
 import com.microsoft.graph.sdk.authentication.IAuthProvider;
 import com.microsoft.graph.sdk.concurrency.ICallback;
-import com.microsoft.graph.sdk.http.IHttpRequest;
 import com.microsoft.graph.sdk.logger.ILogger;
 
 /**
- * Created by pnied on 3/3/2016.
+ * An auth provider for OAuth2 http://oauth.net/2/
  */
 public interface IOAuth2Provider extends IAuthProvider {
 

@@ -1,4 +1,4 @@
-package com.microsoft.graph.oauthexample;
+package com.microsoft.graph.oauth2provider;
 
 import android.net.Uri;
 
@@ -8,18 +8,18 @@ import com.microsoft.services.msa.OAuthConfig;
  * The configuration for an Microsoft OAuth2 v2.0 Endpoint
  */
 @SuppressWarnings("SpellCheckingInspection")
-class MicrosoftOAuth2v2Endpoint implements OAuthConfig {
+class MicrosoftOAuth2Endpoint implements OAuthConfig {
 
     /**
      * The current instance of this class
      */
-    private static MicrosoftOAuth2v2Endpoint sInstance = new MicrosoftOAuth2v2Endpoint();
+    private static MicrosoftOAuth2Endpoint sInstance = new MicrosoftOAuth2Endpoint();
 
     /**
      * The current instance of this class
      * @return The instance
      */
-    static MicrosoftOAuth2v2Endpoint getInstance() {
+    static MicrosoftOAuth2Endpoint getInstance() {
         return sInstance;
     }
 

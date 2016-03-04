@@ -1,9 +1,8 @@
-package com.microsoft.graph.oauthexample;
+package com.microsoft.graph.oauth2provider;
 
 import android.app.Activity;
 import android.app.Application;
 
-import com.microsoft.graph.sdk.authentication.IAuthProvider;
 import com.microsoft.graph.sdk.concurrency.ICallback;
 import com.microsoft.graph.sdk.concurrency.SimpleWaiter;
 import com.microsoft.graph.sdk.core.ClientException;
@@ -84,7 +83,7 @@ public abstract class OAuth2Provider implements IOAuth2Provider {
                 application.getApplicationContext(),
                 getClientId(),
                 Arrays.asList(getScopes()),
-                MicrosoftOAuth2v2Endpoint.getInstance());
+                MicrosoftOAuth2Endpoint.getInstance());
     }
 
     @Override

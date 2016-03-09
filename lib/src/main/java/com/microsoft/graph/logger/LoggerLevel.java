@@ -20,35 +20,19 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.http;
+package com.microsoft.graph.logger;
 
 /**
- * The http method for a request.
+ * Describes the logging levels supported by this client.
  */
-public enum HttpMethod {
+public enum LoggerLevel {
+    /**
+     * Log only errors, the default.
+     */
+    Error,
 
     /**
-     * Get
+     * Log debug information.
      */
-    GET,
-
-    /**
-     * Post
-     */
-    POST,
-
-    /**
-     * Patch
-     */
-    PATCH,
-
-    /**
-     * Delete
-     */
-    DELETE,
-
-    /**
-     * Put
-     */
-    PUT,
+    Debug
 }

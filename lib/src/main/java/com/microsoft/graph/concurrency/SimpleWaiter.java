@@ -20,46 +20,46 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.options;
+package com.microsoft.graph.concurrency;
 
 /**
- * An option that is settable for a request.
+ * A simple signal/waiter interface for synchronizing multi-threaded actions.
  */
-public class Option {
+public class SimpleWaiter {
 
     /**
-     * The name of the option.
+     * The internal lock object for this waiter.
      */
-    private final String mName;
+    private final Object mInternalLock = new Object();
 
     /**
-     * The value of the option.
+     * Indicates if this waiter has been triggered.
      */
-    private final String mValue;
+    private boolean mTriggerState;
 
     /**
-     * Creates an option object.
-     * @param name The name of the option.
-     * @param value The value of the option.
+     * BLOCKING: Waits for the signal to be triggered, or returns immediately if it has already been triggered.
      */
-    protected Option(final String name, final String value) {
-        mName = name;
-        mValue = value;
+    public void waitForSignal() {
+        synchronized (mInternalLock) {
+            if (this.mTriggerState) {
+                return;
+            }
+            try {
+                mInternalLock.wait();
+            } catch (final InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     /**
-     * Gets the name of the option.
-     * @return The name of the option.
+     * Triggers the signal for this waiter.
      */
-    public String getName() {
-        return mName;
-    }
-
-    /**
-     * Gets the value of the option.
-     * @return The value of the option.
-     */
-    public String getValue() {
-        return mValue;
+    public void signal() {
+        synchronized (mInternalLock) {
+            mTriggerState = true;
+            mInternalLock.notifyAll();
+        }
     }
 }

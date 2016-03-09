@@ -20,18 +20,19 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.authentication;
-
-import com.microsoft.graph.sdk.http.IHttpRequest;
+package com.microsoft.graph.options;
 
 /**
- * Provides authentication for a requests before it is sent by a http provider.
+ * A header value.
  */
-public interface IAuthProvider {
+public class HeaderOption extends Option {
 
     /**
-     * Authenticates the request.
-     * @param request The request to authenticate.
+     * Creates a header option object.
+     * @param name The name of the header.
+     * @param value The value of the header.
      */
-    void authenticateRequest(final IHttpRequest request);
+    public HeaderOption(final String name, final String value) {
+        super(name, value);
+    }
 }

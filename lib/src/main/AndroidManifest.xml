@@ -1,4 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.microsoft.graph.oauth2provider">
+    package="com.microsoft.graph.oauth2">
 
 </manifest>

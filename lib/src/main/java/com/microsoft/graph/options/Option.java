@@ -20,24 +20,46 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.concurrency;
-
-import com.microsoft.graph.sdk.core.ClientException;
+package com.microsoft.graph.options;
 
 /**
- * A callback that describes how to deal with success and failure.
- * @param <Result> The result type of the successful action.
+ * An option that is settable for a request.
  */
-public interface ICallback<Result> {
-    /**
-     * How successful results are handled.
-     * @param result The result.
-     */
-    void success(final Result result);
+public class Option {
 
     /**
-     * How failures are handled.
-     * @param ex The exception.
+     * The name of the option.
      */
-    void failure(final ClientException ex);
+    private final String mName;
+
+    /**
+     * The value of the option.
+     */
+    private final String mValue;
+
+    /**
+     * Creates an option object.
+     * @param name The name of the option.
+     * @param value The value of the option.
+     */
+    protected Option(final String name, final String value) {
+        mName = name;
+        mValue = value;
+    }
+
+    /**
+     * Gets the name of the option.
+     * @return The name of the option.
+     */
+    public String getName() {
+        return mName;
+    }
+
+    /**
+     * Gets the value of the option.
+     * @return The value of the option.
+     */
+    public String getValue() {
+        return mValue;
+    }
 }

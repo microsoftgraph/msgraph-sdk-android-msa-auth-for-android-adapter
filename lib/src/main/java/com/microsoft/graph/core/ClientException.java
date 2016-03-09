@@ -20,36 +20,35 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.logger;
+package com.microsoft.graph.core;
 
 /**
- * The logger for the service client.
+ * An exception from the client.
  */
-public interface ILogger {
+public class ClientException extends RuntimeException {
 
     /**
-     * Sets the logging level of this logger.
-     * @param level The level to log at.
+     * The error code for this exception.
      */
-    void setLoggingLevel(final LoggerLevel level);
+    private final GraphErrorCodes mErrorCode;
 
     /**
-     * Gets the logging level of this logger.
-     * @return The level the logger is set to.
+     * Creates the client exception.
+     * @param message The message to display.
+     * @param ex The exception from.
+     * @param errorCode The error code for this exception.
      */
-    LoggerLevel getLoggingLevel();
+    public ClientException(final String message, final Throwable ex, final GraphErrorCodes errorCode) {
+        super(message, ex);
+        mErrorCode = errorCode;
+    }
 
     /**
-     * Log a debug message.
-     * @param message The message.
+     * Determines if the given error code is expected.
+     * @param expectedCode The expected error code.
+     * @return true if the error code matches, and false if there was no match.
      */
-    void logDebug(final String message);
-
-    /**
-     * Log an error message with throwable.
-     * @param message The message.
-     * @param throwable The throwable.
-     */
-    void logError(final String message, final Throwable throwable);
+    public boolean isError(final GraphErrorCodes expectedCode) {
+        return mErrorCode == expectedCode;
+    }
 }
-

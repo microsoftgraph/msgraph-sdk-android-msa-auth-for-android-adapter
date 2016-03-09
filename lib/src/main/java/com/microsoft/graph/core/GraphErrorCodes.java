@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.core;
+package com.microsoft.graph.core;
 
 /**
  * The common Graph error codes.

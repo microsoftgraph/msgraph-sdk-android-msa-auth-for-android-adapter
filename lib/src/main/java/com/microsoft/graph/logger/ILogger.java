@@ -20,48 +20,36 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.http;
-
-import com.microsoft.graph.sdk.options.HeaderOption;
-import com.microsoft.graph.sdk.options.Option;
-
-import java.net.URL;
-import java.util.List;
+package com.microsoft.graph.logger;
 
 /**
- * An http request.
+ * The logger for the service client.
  */
-public interface IHttpRequest {
+public interface ILogger {
 
     /**
-     * Gets the request url.
-     * @return The request url.
+     * Sets the logging level of this logger.
+     * @param level The level to log at.
      */
-    URL getRequestUrl();
+    void setLoggingLevel(final LoggerLevel level);
 
     /**
-     * Gets the http method.
-     * @return The http method.
+     * Gets the logging level of this logger.
+     * @return The level the logger is set to.
      */
-    HttpMethod getHttpMethod();
+    LoggerLevel getLoggingLevel();
 
     /**
-     * Gets the headers.
-     * @return The headers.
+     * Log a debug message.
+     * @param message The message.
      */
-    List<HeaderOption> getHeaders();
+    void logDebug(final String message);
 
     /**
-     * Gets the options.
-     * @return The options.
+     * Log an error message with throwable.
+     * @param message The message.
+     * @param throwable The throwable.
      */
-    List<Option> getOptions();
-
-    /**
-     * Adds a header to this request.
-     * @param header The name of the header.
-     * @param value The value of the header.
-     */
-    void addHeader(String header, String value);
+    void logError(final String message, final Throwable throwable);
 }
 

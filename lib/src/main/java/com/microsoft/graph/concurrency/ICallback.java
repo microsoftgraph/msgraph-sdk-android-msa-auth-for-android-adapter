@@ -20,35 +20,24 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.core;
+package com.microsoft.graph.concurrency;
+
+import com.microsoft.graph.core.ClientException;
 
 /**
- * An exception from the client.
+ * A callback that describes how to deal with success and failure.
+ * @param <Result> The result type of the successful action.
  */
-public class ClientException extends RuntimeException {
+public interface ICallback<Result> {
+    /**
+     * How successful results are handled.
+     * @param result The result.
+     */
+    void success(final Result result);
 
     /**
-     * The error code for this exception.
+     * How failures are handled.
+     * @param ex The exception.
      */
-    private final GraphErrorCodes mErrorCode;
-
-    /**
-     * Creates the client exception.
-     * @param message The message to display.
-     * @param ex The exception from.
-     * @param errorCode The error code for this exception.
-     */
-    public ClientException(final String message, final Throwable ex, final GraphErrorCodes errorCode) {
-        super(message, ex);
-        mErrorCode = errorCode;
-    }
-
-    /**
-     * Determines if the given error code is expected.
-     * @param expectedCode The expected error code.
-     * @return true if the error code matches, and false if there was no match.
-     */
-    public boolean isError(final GraphErrorCodes expectedCode) {
-        return mErrorCode == expectedCode;
-    }
+    void failure(final ClientException ex);
 }

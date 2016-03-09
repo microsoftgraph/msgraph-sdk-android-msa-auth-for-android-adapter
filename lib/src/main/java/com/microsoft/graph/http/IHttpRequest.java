@@ -20,19 +20,48 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.options;
+package com.microsoft.graph.http;
+
+import com.microsoft.graph.options.HeaderOption;
+import com.microsoft.graph.options.Option;
+
+import java.net.URL;
+import java.util.List;
 
 /**
- * A header value.
+ * An http request.
  */
-public class HeaderOption extends Option {
+public interface IHttpRequest {
 
     /**
-     * Creates a header option object.
-     * @param name The name of the header.
+     * Gets the request url.
+     * @return The request url.
+     */
+    URL getRequestUrl();
+
+    /**
+     * Gets the http method.
+     * @return The http method.
+     */
+    HttpMethod getHttpMethod();
+
+    /**
+     * Gets the headers.
+     * @return The headers.
+     */
+    List<HeaderOption> getHeaders();
+
+    /**
+     * Gets the options.
+     * @return The options.
+     */
+    List<Option> getOptions();
+
+    /**
+     * Adds a header to this request.
+     * @param header The name of the header.
      * @param value The value of the header.
      */
-    public HeaderOption(final String name, final String value) {
-        super(name, value);
-    }
+    void addHeader(String header, String value);
 }
+

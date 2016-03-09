@@ -1,15 +1,15 @@
-package com.microsoft.graph.oauth2provider;
+package com.microsoft.graph.oauth2;
 
 import android.app.Activity;
 
-import com.microsoft.graph.sdk.authentication.IAuthProvider;
-import com.microsoft.graph.sdk.concurrency.ICallback;
-import com.microsoft.graph.sdk.logger.ILogger;
+import com.microsoft.graph.authentication.IAuthenticationProvider;
+import com.microsoft.graph.concurrency.ICallback;
+import com.microsoft.graph.logger.ILogger;
 
 /**
  * An auth provider for OAuth2 http://oauth.net/2/
  */
-public interface IOAuth2Provider extends IAuthProvider {
+public interface IOAuth2AuthenticationProvider extends IAuthenticationProvider {
 
     /**
      * Set the logger to a specific instance

@@ -20,19 +20,18 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.logger;
+package com.microsoft.graph.authentication;
+
+import com.microsoft.graph.http.IHttpRequest;
 
 /**
- * Describes the logging levels supported by this client.
+ * Provides authentication for a requests before it is sent by a http provider.
  */
-public enum LoggerLevel {
-    /**
-     * Log only errors, the default.
-     */
-    Error,
+public interface IAuthenticationProvider {
 
     /**
-     * Log debug information.
+     * Authenticates the request.
+     * @param request The request to authenticate.
      */
-    Debug
+    void authenticateRequest(final IHttpRequest request);
 }

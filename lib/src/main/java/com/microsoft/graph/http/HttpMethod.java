@@ -20,46 +20,35 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.concurrency;
+package com.microsoft.graph.http;
 
 /**
- * A simple signal/waiter interface for synchronizing multi-threaded actions.
+ * The http method for a request.
  */
-public class SimpleWaiter {
+public enum HttpMethod {
 
     /**
-     * The internal lock object for this waiter.
+     * Get
      */
-    private final Object mInternalLock = new Object();
+    GET,
 
     /**
-     * Indicates if this waiter has been triggered.
+     * Post
      */
-    private boolean mTriggerState;
+    POST,
 
     /**
-     * BLOCKING: Waits for the signal to be triggered, or returns immediately if it has already been triggered.
+     * Patch
      */
-    public void waitForSignal() {
-        synchronized (mInternalLock) {
-            if (this.mTriggerState) {
-                return;
-            }
-            try {
-                mInternalLock.wait();
-            } catch (final InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
+    PATCH,
 
     /**
-     * Triggers the signal for this waiter.
+     * Delete
      */
-    public void signal() {
-        synchronized (mInternalLock) {
-            mTriggerState = true;
-            mInternalLock.notifyAll();
-        }
-    }
+    DELETE,
+
+    /**
+     * Put
+     */
+    PUT,
 }

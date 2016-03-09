@@ -1,16 +1,16 @@
-package com.microsoft.graph.oauth2provider;
+package com.microsoft.graph.oauth2;
 
 import android.app.Activity;
 import android.app.Application;
 
-import com.microsoft.graph.sdk.concurrency.ICallback;
-import com.microsoft.graph.sdk.concurrency.SimpleWaiter;
-import com.microsoft.graph.sdk.core.ClientException;
-import com.microsoft.graph.sdk.core.GraphErrorCodes;
-import com.microsoft.graph.sdk.http.IHttpRequest;
-import com.microsoft.graph.sdk.logger.DefaultLogger;
-import com.microsoft.graph.sdk.logger.ILogger;
-import com.microsoft.graph.sdk.options.HeaderOption;
+import com.microsoft.graph.concurrency.ICallback;
+import com.microsoft.graph.concurrency.SimpleWaiter;
+import com.microsoft.graph.core.ClientException;
+import com.microsoft.graph.core.GraphErrorCodes;
+import com.microsoft.graph.http.IHttpRequest;
+import com.microsoft.graph.logger.DefaultLogger;
+import com.microsoft.graph.logger.ILogger;
+import com.microsoft.graph.options.HeaderOption;
 import com.microsoft.services.msa.LiveAuthClient;
 import com.microsoft.services.msa.LiveAuthException;
 import com.microsoft.services.msa.LiveAuthListener;
@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * Supports login, logout, and signing requests with authorization information.
  */
-public abstract class OAuth2Provider implements IOAuth2Provider {
+public abstract class OAuth2AuthenticationProvider implements IOAuth2AuthenticationProvider {
 
     /**
      * The authorization header name.
@@ -75,7 +75,7 @@ public abstract class OAuth2Provider implements IOAuth2Provider {
      *
      * @param application the application instance
      */
-    public OAuth2Provider(final Application application) {
+    public OAuth2AuthenticationProvider(final Application application) {
         mLogger = new DefaultLogger();
         application.getBaseContext();
         mApplication = application;

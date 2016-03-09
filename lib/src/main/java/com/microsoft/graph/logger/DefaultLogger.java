@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 // ------------------------------------------------------------------------------
 
-package com.microsoft.graph.sdk.logger;
+package com.microsoft.graph.logger;
 
 import android.util.Log;
 

@@ -1,4 +1,4 @@
-package com.microsoft.graph.oauth2provider;
+package com.microsoft.graph.oauth2;
 
 import android.net.Uri;
 

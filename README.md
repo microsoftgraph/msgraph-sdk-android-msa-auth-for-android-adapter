@@ -1,4 +1,4 @@
-# OAuth2 IAuthenicationProvider Example Library for Android
+# OAuth2 IAuthenticationProvider Example Library for Android
 
 [ ![Download](https://api.bintray.com/packages/microsoftgraph/Maven/oauth2/images/download.svg) ](https://bintray.com/microsoftgraph/Maven/oauth2/_latestVersion)
 [![Build Status](https://travis-ci.org/microsoftgraph/oauth2.svg?branch=master)](https://travis-ci.org/microsoftgraph/oauth2)

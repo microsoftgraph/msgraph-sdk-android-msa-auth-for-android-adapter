@@ -66,6 +66,11 @@ authProvider.login(getActivity(), new ICallback<Void>() {
 Once you have an application that is signed in with a user account you should then create a `GraphServiceClient` to make requests with.
 
 ```java
+// Use the auth provider previously defined within the project and create a configuration instance
 final IClientConfig config = DefaultClientConfig.createWithAuthProvider(authProvider);
-final IGraphServiceClient client = new GraphServiceClient.Builder().FromConfig(config).buildClient();
+
+// Create the service client from the configuration
+final IGraphServiceClient client = new GraphServiceClient.Builder()
+                                        .FromConfig(config)
+                                        .buildClient();
 ```

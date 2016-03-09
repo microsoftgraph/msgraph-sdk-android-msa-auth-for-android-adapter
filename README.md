@@ -71,6 +71,6 @@ final IClientConfig config = DefaultClientConfig.createWithAuthProvider(authProv
 
 // Create the service client from the configuration
 final IGraphServiceClient client = new GraphServiceClient.Builder()
-                                        .FromConfig(config)
+                                        .fromConfig(config)
                                         .buildClient();
 ```

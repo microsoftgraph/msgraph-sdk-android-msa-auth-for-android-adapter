@@ -136,8 +136,8 @@ public abstract class OAuth2AuthenticationProvider implements IOAuth2Authenticat
             @Override
             public void onAuthError(final LiveAuthException exception, final Object userState) {
                 final ClientException clientException = new ClientException("Logout failure",
-                        exception,
-                        GraphErrorCodes.AuthenticationFailure);
+                    exception,
+                    GraphErrorCodes.AuthenticationFailure);
                 mLogger.logError(clientException.getMessage(), clientException);
                 callback.failure(clientException);
             }

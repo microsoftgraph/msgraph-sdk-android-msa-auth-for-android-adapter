@@ -15,7 +15,7 @@ repository {
 
 dependency {
     // Include OAuth2 as a dependency
-    compile 'om.microsoft.graph.oauth2:oauth2:1+'
+    compile 'com.microsoft.graph.oauth2:oauth2:1+'
 }
 ```
 

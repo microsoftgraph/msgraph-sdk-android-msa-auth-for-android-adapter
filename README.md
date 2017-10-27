@@ -176,6 +176,8 @@ For known issues, see [issues](https://github.com/microsoftgraph/msgraph-sdk-and
 
 The MSGraph SDK Android MSA Auth for Android Adapter is open for contribution for bug fixes.  This project is intended to help developers get off the ground quickly with the [MSGraph SDK for Android](https://github.com/microsoftgraph/msgraph-sdk-android) and not to serve as an all inclusive authentication library.
 
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
 ## 6. Supported Android Versions
 This library is supported at runtime for [Android API revision 15](http://source.android.com/source/build-numbers.html) and greater. To build the sdk you need to install Android API revision 23 or greater.
 

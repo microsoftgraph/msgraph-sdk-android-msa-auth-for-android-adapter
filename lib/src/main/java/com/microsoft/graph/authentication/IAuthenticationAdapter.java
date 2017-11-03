@@ -7,6 +7,7 @@ package com.microsoft.graph.authentication;
 import android.app.Activity;
 
 import com.microsoft.graph.concurrency.ICallback;
+import com.microsoft.graph.core.ClientException;
 
 /**
  * An authentication adapter for signing requests, logging in, and logging out.
@@ -34,4 +35,11 @@ public interface IAuthenticationAdapter extends IAuthenticationProvider  {
      * @param callback The callback when the login is complete or an error occurs
      */
     void loginSilent(final ICallback<Void> callback);
+
+    /**
+     * Gets the access token for the session of a logged in user
+     *
+     * @throws ClientException if the session isn't valid
+     */
+    String getAccessToken() throws ClientException;
 }

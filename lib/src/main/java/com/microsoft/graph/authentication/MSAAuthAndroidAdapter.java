@@ -101,20 +101,33 @@ public abstract class MSAAuthAndroidAdapter implements IAuthenticationAdapter {
             }
         }
 
+        try {
+            final String accessToken = getAccessToken();
+            request.addHeader(AUTHORIZATION_HEADER_NAME, OAUTH_BEARER_PREFIX + accessToken);
+        } catch (ClientException e) {
+            final String message = "Unable to authenticate request, No active account found";
+            final ClientException exception = new ClientException(message,
+                e,
+                GraphErrorCodes.AuthenticationFailure);
+            mLogger.logError(message, exception);
+            throw exception;
+        }
+    }
+
+    @Override
+    public String getAccessToken() throws ClientException {
         if (hasValidSession()) {
             mLogger.logDebug("Found account information");
             if (mLiveAuthClient.getSession().isExpired()) {
                 mLogger.logDebug("Account access token is expired, refreshing");
                 loginSilentBlocking();
             }
-
-            final String accessToken = mLiveAuthClient.getSession().getAccessToken();
-            request.addHeader(AUTHORIZATION_HEADER_NAME, OAUTH_BEARER_PREFIX + accessToken);
+            return mLiveAuthClient.getSession().getAccessToken();
         } else {
-            final String message = "Unable to authenticate request, No active account found";
+            final String message = "Unable to get access token, No active account found";
             final ClientException exception = new ClientException(message,
-                                                                  null,
-                                                                  GraphErrorCodes.AuthenticationFailure);
+                null,
+                GraphErrorCodes.AuthenticationFailure);
             mLogger.logError(message, exception);
             throw exception;
         }

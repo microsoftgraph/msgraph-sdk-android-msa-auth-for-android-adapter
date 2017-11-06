@@ -40,7 +40,6 @@ public interface IAuthenticationAdapter extends IAuthenticationProvider  {
      * Gets the access token for the session of a logged in user
      *
      * @return the access token
-     * @throws ClientException if the session isn't valid
      */
     String getAccessToken() throws ClientException;
 }

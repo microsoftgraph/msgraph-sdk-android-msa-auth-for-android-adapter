@@ -23,7 +23,7 @@ You can fork or use this implementation as a starting point to develop functiona
 ## 1. Installation
 
 ### 1.1 Install AAR via Gradle
-Add the maven central repository to your project's build.gradle file then add a compile dependency for `com.microsoft.graph:msa-auth-for-android-adapter:0.9.+`
+Add the maven central repository to your project's build.gradle file then add a compile dependency for `com.microsoft.graph:msa-auth-for-android-adapter:0.10.+`
 
 ```gradle
 repository {
@@ -32,7 +32,7 @@ repository {
 
 dependency {
     // Include MSGraph SDK Android MSA Auth for Android Adapter as a dependency
-    compile 'com.microsoft.graph:msa-auth-for-android-adapter:0.9.+'
+    compile 'com.microsoft.graph:msa-auth-for-android-adapter:0.10.+'
 }
 ```
 

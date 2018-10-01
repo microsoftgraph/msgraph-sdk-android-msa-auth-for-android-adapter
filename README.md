@@ -50,7 +50,7 @@ At the top of the app registration page note the Application Id value. This is t
 
 #### 2.1.2 Add a mobile application platform to the application
 
-Once the application has been created select 'Add Platform' in the Platforms section and then select the `Mobile Application` option in the dialog that appears.  This creates a new mobile application with a redirect url of `urn:ietf:wg:oauth:2.0:oob`.
+Once the application has been created select 'Add Platform' in the Platforms section and then select the `Native Application` option in the dialog that appears.  This creates a new mobile application with a redirect url of `urn:ietf:wg:oauth:2.0:oob`.
 
 **Note:** Make sure you scroll to the button of the page and hit **Save** to save your platform changes.
 
@@ -69,7 +69,7 @@ final IAuthenticationAdapter authenticationAdapter = new MSAAuthAndroidAdapter()
     }
 
     @Override
-    protected String[] getScopes() {
+    public String[] getScopes() {
         return new String[] {
             // An example set of scopes your application could use
             "https://graph.microsoft.com/Calendars.ReadWrite",
@@ -83,7 +83,7 @@ final IAuthenticationAdapter authenticationAdapter = new MSAAuthAndroidAdapter()
             "openid"
         };
     }
-}
+};
 ```
 
 ## 3. Using the IAuthenticationAdapter with a GraphService client
@@ -105,7 +105,7 @@ authenticationAdapter.login(getActivity(), new ICallback<Void>() {
     public void failure(final ClientException ex) {
         //Handle failed login
     }
-};
+});
 ```
 
 ### 3.2 Logging Out
@@ -121,7 +121,7 @@ authenticationAdapter.logout(new ICallback<Void>() {
     public void failure(final ClientException ex) {
         //Handle failed logout
     }
-};
+});
 ```
 
 ### 3.3 Integration with Graph Service client
@@ -152,14 +152,13 @@ final ICallback<User> callback = new ICallback<User>() {
 
     @Override
     public void failure(final ClientException ex) {
-        if (ex.isError(GraphErrorCodes.AuthenticationFailure))
-        {
+        if (ex.isError(GraphErrorCodes.AuthenticationFailure)) {
             // Reset application to login again
         }
 
         // Handle other failed causes
     }
-}
+};
 
 // Make a request for the current user object
 client

@@ -1,3 +1,8 @@
+# Deprecated use the Java SDK instead.
+⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠
+
+This repository and library is not being maintained anymore, for any Android project, use the [Java SDK](https://github.com/microsoftgraph/msgraph-sdk-java) instead.
+
 # MSGraph SDK Android MSA Auth for Android Adapter
 
 [ ![Download](https://api.bintray.com/packages/microsoftgraph/Maven/msgraph-sdk-android-msa-auth-for-android-adapter/images/download.svg) ](https://bintray.com/microsoftgraph/Maven/msgraph-sdk-android-msa-auth-for-android-adapter/_latestVersion)
